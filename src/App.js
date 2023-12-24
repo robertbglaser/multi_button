@@ -1,23 +1,40 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
 
 function App() {
+  const [selectValue, setSelectValue]= useState(15)
+
+  
+
+  const getButtonsUsingForLoop = (num) => {
+    const array = []
+
+    for(var i = 1; i <= num; i++){
+      var item=0
+      item = i;
+      array.push(<div> 
+        <button 
+        key={item} onClick={() => console.log('button click heard button #', ) }>{item}</button>
+      <br/> </div>)
+    }
+
+    return array
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <select onChange={(e) =>{setSelectValue(e.target.value)}} defaultValue={selectValue}> 
+      <option value='5'>5</option>
+      <option value='10'>10</option>
+      <option value='15'>15</option>  
+      
+      </select>
+
+
+      {getButtonsUsingForLoop(selectValue)}
+
+
+      
+    
     </div>
   );
 }
